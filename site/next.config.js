@@ -17,6 +17,7 @@ module.exports = withCommerceConfig({
     defaultLocale: 'en-US',
   },
   assetPrefix: isProd ? 'https://marketplace.papaya.bike' : undefined,
+  basePath: isProd ? '/marketplace' : undefined,
   rewrites() {
     return [
       (isBC || isShopify || isSwell || isVendure || isSaleor) && {
