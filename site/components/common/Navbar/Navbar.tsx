@@ -20,10 +20,10 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
     <Container clean className="mx-auto max-w-8xl px-6">
       <div className={s.nav}>
         <div className="flex items-center flex-1">
-          <a href="/" className={s.logo} aria-label="Logo">
+          <Link href="/search" className={s.logo} aria-label="Logo">
             <Logo />
             <span className='text-sm block font-medium' style={{marginTop: -14}}>Marketplace</span>
-          </a>
+          </Link>
           <nav className={s.navMenu}>
             <a href="/" className={s.link}>
              <ArrowLeft width="15" className="mr-2" /> Dashboard
