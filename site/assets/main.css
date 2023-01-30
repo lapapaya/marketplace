@@ -5,3 +5,9 @@
 @import './components.css';
 
 @tailwind utilities;
+
+@layer base {
+  a {
+    @apply hover:text-papaya;
+  }
+}
