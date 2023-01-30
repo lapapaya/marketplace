@@ -15,6 +15,7 @@ import {
 } from '@components/ui'
 
 import type { LineItem } from '@commerce/types/cart'
+import { stringHashToColour, useMe } from '@lib/api/papaya'
 
 const countItem = (count: number, item: LineItem) => count + item.quantity
 
@@ -23,6 +24,9 @@ const UserNav: React.FC<{
 }> = ({ className }) => {
   const { data } = useCart()
   const { data: isCustomerLoggedIn } = useCustomer()
+
+  const user = useMe()
+
   const {
     toggleSidebar,
     closeSidebarIfPresent,
@@ -67,19 +71,21 @@ const UserNav: React.FC<{
           </li>
         )}
         {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (
-          <li className={s.item}>
-            <Dropdown>
-              <DropdownTrigger>
-                <button
-                  aria-label="Menu"
-                  className={s.avatarButton}
-                  onClick={() => (isCustomerLoggedIn ? null : openModal())}
-                >
-                  <Avatar />
-                </button>
-              </DropdownTrigger>
-              <CustomerMenuContent />
-            </Dropdown>
+          <li className='ml-5'>
+            {user.data &&
+            <>
+            <span className='mr-3 text-sm text-gray-800 font-400'>{user.data?.first_name}</span>
+            <img
+            className="inline-block h-10 w-10 rounded-full"
+            src={
+              user.data.avatar_url ||
+              `https://avatar.oxro.io/avatar.svg?name=${
+                user.data.first_name || user.data.email
+              }&background=${stringHashToColour(user.data.id)}`
+            }
+            alt=""
+            />
+          </>}
           </li>
         )}
         <li className={s.mobileMenu}>
