@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         papaya: 'var(--papaya)',
         'papaya-2': 'var(--papaya-2)',
+        'papaya-secondary': 'var(--papaya-secondary)',
         primary: 'var(--primary)',
         'primary-2': 'var(--primary-2)',
         secondary: 'var(--secondary)',

@@ -8,15 +8,42 @@ import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
 
+
+interface PapayaProduct extends Product {
+  voltage?: {
+    value: string | number
+  }
+  capacity?: {
+    value: string | number
+  }
+  range?: {
+    value: string | number
+  }
+  chargeTime?: {
+    value: string | number
+  }
+  power?: {
+    value: string | number
+  }
+}
+
+
 interface Props {
   className?: string
-  product: Product
+  product: PapayaProduct
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
   variant?: 'default' | 'slim' | 'simple' | 'search'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
+
+const MetaData: FC<{ label: string, value: string | number | undefined, unit?: string }> = ({ label, value, unit }) => {
+  return value ? <div className='flex justify-between items-center mb-2'>
+    <div className='text-xs inline-flex items-center rounded-full bg-papaya-secondary px-2.5 py-0.5 font-bold text-papaya'>{label}</div>
+    <div className='font-medium text-sm'>{value} {unit}</div>
+  </div>: null
+}
 
 const ProductCard: FC<Props> = ({
   product,
@@ -143,7 +170,13 @@ const ProductCard: FC<Props> = ({
               />
             )}
           </div>
-
+          <div className='mt-2 border-t pt-4'>
+            <MetaData label='Range' value={product.range?.value} unit='KM' />
+            <MetaData label='Charge Time' value={product.chargeTime?.value} unit='hours' />
+            <MetaData label='Capacity' value={product.capacity?.value} unit='Kg' />
+            <MetaData label='Voltage' value={product.voltage?.value} unit='V' />
+            <MetaData label='Power' value={product.power?.value} unit='W' />
+          </div>
         </div>
       )}
     </Link>
