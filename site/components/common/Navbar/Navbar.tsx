@@ -22,9 +22,10 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
         <div className="flex items-center flex-1">
           <Link href="/" className={s.logo} aria-label="Logo">
             <Logo />
+            <span className='text-sm block font-medium' style={{marginTop: -14}}>Marketplace</span>
           </Link>
           <nav className={s.navMenu}>
-            <Link href="/search" className={s.link}>
+            <Link href="/" className={s.link}>
              <ArrowLeft width="15" className="mr-2" /> Dashboard
             </Link>
             {/* {links?.map((l) => (
@@ -35,7 +36,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </nav>
         </div>
         {process.env.COMMERCE_SEARCH_ENABLED && (
-          <div className="justify-center flex-1 hidden lg:flex">
+          <div className="justify-center items-center flex-1 hidden lg:flex">
             <Searchbar />
           </div>
         )}
