@@ -4,6 +4,7 @@ import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
+import { ArrowLeft } from '@components/icons'
 
 interface Link {
   href: string
@@ -24,13 +25,13 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </Link>
           <nav className={s.navMenu}>
             <Link href="/search" className={s.link}>
-              All
+             <ArrowLeft width="15" className="mr-2" /> Dashboard
             </Link>
-            {links?.map((l) => (
+            {/* {links?.map((l) => (
               <Link href={l.href} key={l.href} className={s.link}>
                 {l.label}
               </Link>
-            ))}
+            ))} */}
           </nav>
         </div>
         {process.env.COMMERCE_SEARCH_ENABLED && (

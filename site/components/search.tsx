@@ -102,7 +102,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`border origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'categories' || toggleFilter !== true
                   ? 'hidden'
                   : ''
@@ -202,7 +202,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`border origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'brands' || toggleFilter !== true
                   ? 'hidden'
                   : ''
@@ -236,7 +236,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
-                          All Designers
+                          All Providers
                         </a>
                       </Link>
                     </li>
@@ -376,7 +376,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+              className={`border origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                 activeFilter !== 'sort' || toggleFilter !== true ? 'hidden' : ''
               }`}
             >

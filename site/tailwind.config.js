@@ -10,6 +10,8 @@ module.exports = {
         '8xl': '1920px',
       },
       colors: {
+        papaya: 'var(--papaya)',
+        'papaya-2': 'var(--papaya-2)',
         primary: 'var(--primary)',
         'primary-2': 'var(--primary-2)',
         secondary: 'var(--secondary)',
