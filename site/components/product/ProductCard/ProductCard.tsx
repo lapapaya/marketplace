@@ -13,7 +13,7 @@ interface Props {
   product: Product
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple'
+  variant?: 'default' | 'slim' | 'simple' | 'search'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -123,6 +123,28 @@ const ProductCard: FC<Props> = ({
             )}
           </div>
         </>
+      )}
+
+      {variant === 'search' && (
+        <div className='border rounded-md bg-primary-2 py-3 px-4'>
+          <h3 className='text-lg font-medium'>
+            {product.name}
+          </h3>
+          <div className={s.imageContainer}>
+            {product?.images && (
+              <Image
+                alt={product.name || 'Product Image'}
+                className={s.productImage}
+                src={product.images[0]?.url || placeholderImg}
+                height={540}
+                width={540}
+                quality="85"
+                {...imgProps}
+              />
+            )}
+          </div>
+
+        </div>
       )}
     </Link>
   )
