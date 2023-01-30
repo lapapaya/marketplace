@@ -36,7 +36,7 @@ export const queryClient = new QueryClient({
   },
 })
 
-export const stringHashToColour = function (str) {
+export const stringHashToColour = function (str: string) {
   if (!str) {
     return ''
   }
