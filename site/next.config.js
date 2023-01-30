@@ -8,12 +8,15 @@ const isSaleor = provider === '@vercel/commerce-saleor'
 const isSwell = provider === '@vercel/commerce-swell'
 const isVendure = provider === '@vercel/commerce-vendure'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 module.exports = withCommerceConfig({
   commerce,
   i18n: {
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
   },
+  assetPrefix: isProd ? 'https://marketplace.papaya.bike' : undefined,
   rewrites() {
     return [
       (isBC || isShopify || isSwell || isVendure || isSaleor) && {
