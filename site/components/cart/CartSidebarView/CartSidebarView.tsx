@@ -9,7 +9,7 @@ import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
-
+const countItem = (count: number, item: LineItem) => count + item.quantity
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
   const { data, isLoading, isEmpty } = useCart()
@@ -28,6 +28,8 @@ const CartSidebarView: FC = () => {
   )
   const handleClose = () => closeSidebar()
   const goToCheckout = () => setSidebarView('CHECKOUT_VIEW')
+
+  const itemsCount = data?.lineItems?.reduce(countItem, 0) ?? 0
 
   const error = null
   const success = null
@@ -75,7 +77,7 @@ const CartSidebarView: FC = () => {
           <div className="px-4 sm:px-6 flex-1">
             <Link href="/cart">
               <Text variant="sectionHeading" onClick={handleClose}>
-                My Cart
+                Quote Builder
               </Text>
             </Link>
             <ul className={s.lineItemsList}>
@@ -90,7 +92,7 @@ const CartSidebarView: FC = () => {
           </div>
 
           <div className="flex-shrink-0 px-6 py-6 sm:px-6 sticky z-20 bottom-0 w-full right-0 left-0 bg-accent-0 border-t text-sm">
-            <ul className="pb-2">
+            {/* <ul className="pb-2">
               <li className="flex justify-between py-1">
                 <span>Subtotal</span>
                 <span>{subTotal}</span>
@@ -103,10 +105,13 @@ const CartSidebarView: FC = () => {
                 <span>Shipping</span>
                 <span className="font-bold tracking-wide">FREE</span>
               </li>
-            </ul>
+            </ul> */}
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
-              <span>Total</span>
-              <span>{total}</span>
+              <span>Fleet Size</span>
+              <span>{itemsCount}</span>
+            </div>
+            <div>
+              <p className='mb-5 text-slate-800'>After submitting a fleet sourcing specialist from Papaya will review your requirements and reach out to you.</p>
             </div>
             <div>
               {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
@@ -115,7 +120,7 @@ const CartSidebarView: FC = () => {
                 </Button>
               ) : (
                 <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
+                  Submit Quote Request
                 </Button>
               )}
             </div>

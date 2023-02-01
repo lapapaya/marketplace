@@ -9,6 +9,7 @@ import usePrice from '@framework/product/use-price'
 import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import Quantity from '@components/ui/Quantity'
+import { MetaData } from '@components/product/ProductCard/ProductCard'
 
 type ItemOption = {
   name: string
@@ -135,9 +136,10 @@ const CartItem = ({
           )}
         </div>
         <div className="flex flex-col justify-between space-y-2 text-sm">
-          <span>{price}</span>
+
         </div>
       </div>
+      <span className='text-sm mb-2'>Estimated fleet size</span>
       {variant === 'default' && (
         <Quantity
           value={quantity}

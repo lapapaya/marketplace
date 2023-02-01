@@ -17,7 +17,7 @@ const Quantity: FC<QuantityProps> = ({
   decrease,
   handleChange,
   handleRemove,
-  max = 6,
+  max = 1000,
 }) => {
   return (
     <div className="flex flex-row h-9">
@@ -28,13 +28,12 @@ const Quantity: FC<QuantityProps> = ({
         <input
           className={s.input}
           onChange={(e) =>
-            Number(e.target.value) < max + 1 ? handleChange(e) : () => {}
+            Number(e.target.value) < max + 1 && Number(e.target.value)>0 ? handleChange(e) : () => {}
           }
           value={value}
           type="number"
           max={max}
           min="0"
-          readOnly
         />
       </label>
       <button
