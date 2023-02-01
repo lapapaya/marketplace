@@ -9,7 +9,7 @@ import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
 
 
-interface PapayaProduct extends Product {
+export interface PapayaProduct extends Product {
   voltage?: {
     value: string | number
   }
@@ -38,7 +38,7 @@ interface Props {
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-const MetaData: FC<{ label: string, value: string | number | undefined, unit?: string }> = ({ label, value, unit }) => {
+export const MetaData: FC<{ label: string, value: string | number | undefined, unit?: string }> = ({ label, value, unit }) => {
   return value ? <div className='flex justify-between items-center mb-2'>
     <div className='text-xs inline-flex items-center rounded-full bg-papaya-secondary px-2.5 py-0.5 font-bold text-papaya'>{label}</div>
     <div className='font-medium text-sm'>{value} {unit}</div>

@@ -38,14 +38,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
             >
               <span className="mr-2 text-right">
                 <Logo />
-                <span className="inline-flex items-center rounded-full bg-papaya px-2.5 py-0.5 text-xs font-medium text-primary-2">
-                  Marketplace
-                </span>
+                <span className='text-sm block font-medium' style={{marginTop: -14}}>Marketplace</span>
               </span>
             </Link>
           </div>
           <div className="col-span-1 lg:col-span-7">
-            <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
+            {/* <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
               {[...links, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link
@@ -56,7 +54,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   </Link>
                 </span>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="col-span-1 lg:col-span-3 flex items-start lg:justify-end text-primary">
             <div className="flex space-x-4 items-center h-10">

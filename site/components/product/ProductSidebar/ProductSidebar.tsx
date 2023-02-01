@@ -2,17 +2,17 @@ import s from './ProductSidebar.module.css'
 import { useAddItem } from '@framework/cart'
 import { FC, useEffect, useState } from 'react'
 import { ProductOptions } from '@components/product'
-import type { Product } from '@commerce/types/product'
-import { Button, Text, Rating, Collapse, useUI } from '@components/ui'
+import { Button, Text, useUI } from '@components/ui';
 import {
   getProductVariant,
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
 import ErrorMessage from '@components/ui/ErrorMessage'
+import { MetaData, PapayaProduct } from '../ProductCard/ProductCard'
 
 interface ProductSidebarProps {
-  product: Product
+  product: PapayaProduct
   className?: string
 }
 
@@ -58,14 +58,10 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
-      <Text
+      {product.description || product.descriptionHtml && <Text
         className="pb-4 break-words w-full max-w-xl"
         html={product.descriptionHtml || product.description}
-      />
-      <div className="flex flex-row justify-between items-center">
-        <Rating value={4} />
-        <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
-      </div>
+      />}
       <div>
         {error && <ErrorMessage error={error} className="my-5" />}
         {process.env.COMMERCE_CART_ENABLED && (
@@ -75,24 +71,22 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
             className={s.button}
             onClick={addToCart}
             loading={loading}
-            disabled={variant?.availableForSale === false}
           >
-            {variant?.availableForSale === false
-              ? 'Not Available'
-              : 'Add To Cart'}
+            Add to Quote builder
           </Button>
         )}
       </div>
-      <div className="mt-6">
-        <Collapse title="Care">
-          This is a limited edition production run. Printing starts when the
-          drop ends.
-        </Collapse>
-        <Collapse title="Details">
-          This is a limited edition production run. Printing starts when the
-          drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due
-          to COVID-19.
-        </Collapse>
+
+      <div className="mt-6 bg-primary-2 p-4 border rounded-md">
+
+      <h3 className='font-medium text-xl text-slate-700 mb-5'>Stats</h3>
+
+      <MetaData label='Range' value={product.range?.value} unit='KM' />
+      <MetaData label='Charge Time' value={product.chargeTime?.value} unit='hours' />
+      <MetaData label='Capacity' value={product.capacity?.value} unit='Kg' />
+      <MetaData label='Voltage' value={product.voltage?.value} unit='V' />
+      <MetaData label='Power' value={product.power?.value} unit='W' />
+
       </div>
     </div>
   )

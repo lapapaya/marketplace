@@ -24,6 +24,21 @@ const getProductQuery = /* GraphQL */ `
           currencyCode
         }
       }
+      voltage: metafield(namespace: "papaya", key: "voltage_v") {
+        value
+      }
+      capacity: metafield(namespace: "papaya", key: "cargo_capacity") {
+        value
+      }
+      range: metafield(namespace: "papaya", key: "range") {
+        value
+      }
+      chargeTime: metafield(namespace: "papaya", key: "charging_time_h") {
+        value
+      }
+      power: metafield(namespace: "papaya", key: "power_w") {
+        value
+      }
       variants(first: 250) {
         pageInfo {
           hasNextPage

@@ -8,7 +8,8 @@ export const useAcceptCookies = () => {
 
   useEffect(() => {
     if (!Cookies.get(COOKIE_NAME)) {
-      setAcceptedCookies(false)
+      // remove cookie banner
+      // setAcceptedCookies(false)
     }
   }, [])
 

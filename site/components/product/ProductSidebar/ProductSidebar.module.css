@@ -54,6 +54,7 @@
 }
 
 .button {
+  @apply bg-papaya hover:bg-primary border-none rounded-md text-white hover:text-papaya font-bold  ring-offset-2 hover:ring-2 ring-papaya;
   width: 100%;
 }
 
