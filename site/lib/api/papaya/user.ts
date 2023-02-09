@@ -1,4 +1,6 @@
+import useSignup from '@framework/auth/use-signup'
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 export interface User {
   id: string
@@ -26,5 +28,20 @@ export interface User {
 }
 
 export const useMe = () => {
-  return useQuery<User>(['/users/current'])
+  const user = useQuery<User>(['/users/current'])
+
+  const signup = useSignup()
+
+  useEffect(() => {
+    if (user.data) {
+      signup({
+        email: user.data.email,
+        firstName: user.data.first_name,
+        lastName: user.data.last_name,
+        password: user.data.id,
+      })
+    }
+  }, [user.data])
+
+  return user
 }

@@ -55,6 +55,13 @@ export type SubmitCheckoutHook = {
   actionInput: CheckoutBody
 }
 
+export type SubmitFreeCheckoutHook = {
+  data: any
+  input: {}
+  fetcherInput: { checkoutId?: string }
+  actionInput: { checkoutId?: string }
+}
+
 export type GetCheckoutHook = {
   data: Checkout | null
   input: {}

@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import s from './CartSidebarView.module.css'
 import CartItem from '../CartItem'
 import { Button, Text } from '@components/ui'
@@ -10,7 +10,7 @@ import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
 import { LineItem } from '@commerce/types/cart'
-import useCheckout from '@framework/checkout/use-checkout'
+import useFreeCheckout from '@framework/checkout/use-free-checkout'
 
 const countItem = (count: number, item: LineItem) => count + item.quantity
 const CartSidebarView: FC = () => {
@@ -18,7 +18,7 @@ const CartSidebarView: FC = () => {
   const { data, isLoading, isEmpty } = useCart()
 
 
-  const checkout = useCheckout()
+  const checkout = useFreeCheckout()
 
 
   const { price: subTotal } = usePrice(
