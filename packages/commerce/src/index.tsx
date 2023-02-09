@@ -33,6 +33,7 @@ export type Provider = CommerceConfig & {
   checkout?: {
     useCheckout?: SWRHook<Checkout.GetCheckoutHook>
     useSubmitCheckout?: MutationHook<Checkout.SubmitCheckoutHook>
+    useSubmitFreeCheckout?: MutationHook<Checkout.SubmitFreeCheckoutHook>
   }
   wishlist?: {
     useWishlist?: SWRHook<Wishlist.GetWishlistHook>

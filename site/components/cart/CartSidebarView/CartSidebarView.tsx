@@ -10,15 +10,14 @@ import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
 import { LineItem } from '@commerce/types/cart'
-import useFreeCheckout from '@framework/checkout/use-free-checkout'
+import useSubmitFreeCheckout from '@framework/checkout/use-checkout'
 
 const countItem = (count: number, item: LineItem) => count + item.quantity
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
   const { data, isLoading, isEmpty } = useCart()
 
-
-  const checkout = useFreeCheckout()
+  const checkout = useSubmitFreeCheckout()
 
 
   const { price: subTotal } = usePrice(
@@ -35,7 +34,7 @@ const CartSidebarView: FC = () => {
   )
   const handleClose = () => closeSidebar()
   const createCheckout = () => {
-    checkout({checkoutId: data?.id})
+    checkout()
   }
 
   const itemsCount = data?.lineItems?.reduce(countItem, 0) ?? 0

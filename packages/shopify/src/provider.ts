@@ -4,6 +4,7 @@ import { handler as useCart } from './cart/use-cart'
 import { handler as useAddItem } from './cart/use-add-item'
 import { handler as useUpdateItem } from './cart/use-update-item'
 import { handler as useRemoveItem } from './cart/use-remove-item'
+import { handler as useSubmitFreeCheckout } from './checkout/use-checkout'
 
 import { handler as useCustomer } from './customer/use-customer'
 import { handler as useSearch } from './product/use-search'
@@ -19,6 +20,9 @@ export const shopifyProvider = {
   cartCookie: SHOPIFY_CHECKOUT_ID_COOKIE,
   fetcher,
   cart: { useCart, useAddItem, useUpdateItem, useRemoveItem },
+  checkout: {
+    useSubmitFreeCheckout,
+  },
   customer: { useCustomer },
   products: { useSearch },
   auth: { useLogin, useLogout, useSignup },

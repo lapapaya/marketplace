@@ -11,7 +11,7 @@ export type UseSubmitFreeCheckout<
 
 export const fetcher: HookFetcherFn<SubmitFreeCheckoutHook> = mutationFetcher
 
-const fn = (provider: Provider) => provider.checkout?.useSubmitCheckout!
+const fn = (provider: Provider) => provider.checkout?.useSubmitFreeCheckout!
 
 const useSubmitFreeCheckout: UseSubmitFreeCheckout = (...args) => {
   const hook = useHook(fn)
