@@ -39,6 +39,13 @@ const CartSidebarView: FC = () => {
 
     await associate()
     await checkout()
+
+    // On Successful checkout
+
+    //TODO: Check that it was successful.
+
+    setSidebarView('THANK_YOU_VIEW')
+
   }
 
   const itemsCount = data?.lineItems?.reduce(countItem, 0) ?? 0
@@ -55,14 +62,14 @@ const CartSidebarView: FC = () => {
     >
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
-          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-secondary text-secondary">
+          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-papaya text-secondary">
             <Bag className="absolute" />
           </span>
           <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-            Your cart is empty
+            Your Fleet is empty
           </h2>
           <p className="text-accent-3 px-10 text-center pt-2">
-            Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+            Add a vehicle to your fleet quote to get started.
           </p>
         </div>
       ) : error ? (
