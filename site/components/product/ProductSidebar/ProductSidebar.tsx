@@ -58,10 +58,6 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
-      {product.description || product.descriptionHtml && <Text
-        className="pb-4 break-words w-full max-w-xl"
-        html={product.descriptionHtml || product.description}
-      />}
       <div>
         {error && <ErrorMessage error={error} className="my-5" />}
         {process.env.COMMERCE_CART_ENABLED && (
@@ -76,6 +72,17 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
           </Button>
         )}
       </div>
+      {product.descriptionHtml &&
+
+      <div className='mt-6 bg-primary-2 p-4 border rounded-md'>
+        <h3 className='font-medium text-xl text-slate-700 mb-5'>Description</h3>
+        <Text
+            className="pb-4 break-words w-full max-w-xl"
+            html={product.descriptionHtml}
+          />
+        </div>
+      }
+
 
       <div className="mt-6 bg-primary-2 p-4 border rounded-md">
 
@@ -88,6 +95,22 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
       <MetaData label='Power' value={product.power?.value} unit='W' />
 
       </div>
+
+      {product.descriptionHtml && <div className='mt-8'>
+      {process.env.COMMERCE_CART_ENABLED && (
+          <Button
+            aria-label="Add to Cart"
+            type="button"
+            className={s.button}
+            onClick={addToCart}
+            loading={loading}
+          >
+            Add to Quote builder
+          </Button>
+        )}
+
+      </div>}
+
     </div>
   )
 }
