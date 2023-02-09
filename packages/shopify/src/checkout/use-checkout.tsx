@@ -14,7 +14,7 @@ export const handler: MutationHook<SubmitFreeCheckoutHook> = {
   fetchOptions: {
     query: checkoutCompleteFreeMutation,
   },
-  async fetcher({ input: item, options, fetch }) {
+  async fetcher({ input, options, fetch }) {
 
     let checkoutId = getCheckoutId()
 

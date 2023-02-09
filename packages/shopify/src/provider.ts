@@ -13,6 +13,8 @@ import { handler as useLogin } from './auth/use-login'
 import { handler as useLogout } from './auth/use-logout'
 import { handler as useSignup } from './auth/use-signup'
 
+import { handler as useCheckoutCustomerAssociate } from './customer/useCheckoutCustomerAssociate'
+
 import fetcher from './fetcher'
 
 export const shopifyProvider = {
@@ -23,7 +25,7 @@ export const shopifyProvider = {
   checkout: {
     useSubmitFreeCheckout,
   },
-  customer: { useCustomer },
+  customer: { useCustomer, useCheckoutCustomerAssociate },
   products: { useSearch },
   auth: { useLogin, useLogout, useSignup },
 }

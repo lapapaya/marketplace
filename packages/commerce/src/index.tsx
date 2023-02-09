@@ -42,6 +42,7 @@ export type Provider = CommerceConfig & {
   }
   customer?: {
     useCustomer?: SWRHook<Customer.CustomerHook>
+    useCheckoutCustomerAssociate?: MutationHook<Customer.CheckoutCustomerAssociateHook>
     card?: {
       useCards?: SWRHook<Customer.Card.GetCardsHook>
       useAddItem?: MutationHook<Customer.Card.AddItemHook>

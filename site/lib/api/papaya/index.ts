@@ -3,7 +3,8 @@ import { QueryClient, QueryFunction } from '@tanstack/react-query'
 export * from './user'
 
 export const API_ENDPOINT =
-  process.env.NEXT_PUBLIC_API_ENDPOINT ?? 'https://staging.papaya.bike'
+  process.env.NEXT_PUBLIC_API_ENDPOINT ??
+  'https://papaya-dashboard-api.herokuapp.com'
 
 export const defaultQueryFn: QueryFunction<any, any> = async ({ queryKey }) => {
   let endpoint = `${API_ENDPOINT}${
@@ -32,6 +33,7 @@ export const queryClient = new QueryClient({
       staleTime: 180000,
       cacheTime: Infinity,
       queryFn: defaultQueryFn,
+      retry: 0,
     },
   },
 })

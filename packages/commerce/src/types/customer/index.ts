@@ -1,3 +1,5 @@
+import { AssociateCustomerWithCheckoutMutation } from './../../../../shopify/schema.d'
+import { CustomerAccessToken } from './../../../../swell/schema.d'
 export * as Card from './card'
 export * as Address from './address'
 
@@ -38,7 +40,7 @@ export interface Customer {
 }
 
 export type CustomerHook = {
-  data: Customer | null | undefined
+  data: any
   fetchData: { customer: Customer } | null
 }
 
@@ -51,4 +53,14 @@ export type CustomerSchema = {
       }
     }
   }
+}
+
+export interface CheckoutCustomerAssociateBody {
+  checkoutId: string
+  CustomerAccessToken: string
+}
+
+export type CheckoutCustomerAssociateHook = {
+  data: any
+  body: CheckoutCustomerAssociateBody
 }
