@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import s from './CartSidebarView.module.css'
 import CartItem from '../CartItem'
 import { Button, Text } from '@components/ui'
@@ -22,6 +22,9 @@ const CartSidebarView: FC = () => {
   const checkout = useSubmitFreeCheckout()
 
 
+  const [isCheckingOut, setIsCheckingOut] = useState(false)
+
+
   const { price: subTotal } = usePrice(
     data && {
       amount: Number(data.subtotalPrice),
@@ -37,8 +40,12 @@ const CartSidebarView: FC = () => {
   const handleClose = () => closeSidebar()
   const createCheckout = async () => {
 
+    setIsCheckingOut(true)
+
     await associate()
     await checkout()
+
+    setIsCheckingOut(false)
 
     // On Successful checkout
 
@@ -134,7 +141,7 @@ const CartSidebarView: FC = () => {
             </div>
             <div>
               {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
-                <Button Component="a" width="100%" onClick={createCheckout}>
+                <Button Component="a" loading={isCheckingOut} width="100%" onClick={createCheckout}>
                   Submit Quote Request
                 </Button>
               ) : (

@@ -1,3 +1,7 @@
+import {
+  AssociateCustomerWithCheckoutMutationVariables,
+  AssociateCustomerWithCheckoutMutation,
+} from './../../schema.d'
 import Cookies from 'js-cookie'
 
 import {
@@ -14,6 +18,8 @@ import {
   MutationCheckoutCreateArgs,
 } from '../../schema'
 import { FetcherOptions } from '@vercel/commerce/utils/types'
+import associateCustomerWithCheckoutMutation from './mutations/associate-customer-with-checkout'
+import { getCustomerToken } from './customer-token'
 
 export const checkoutCreate = async (
   fetch: <T = any, B = Body>(options: FetcherOptions<B>) => Promise<T>,
@@ -23,6 +29,16 @@ export const checkoutCreate = async (
     query: checkoutCreateMutation,
     variables: {
       input: { lineItems },
+    },
+  })
+
+  const customerAccessToken = getCustomerToken()
+
+  await fetch<Mutation, AssociateCustomerWithCheckoutMutationVariables>({
+    query: associateCustomerWithCheckoutMutation,
+    variables: {
+      checkoutId: checkoutCreate?.checkout?.id,
+      customerAccessToken,
     },
   })
 
