@@ -229,6 +229,14 @@ export type RemoveItemHook = {
   actionInput: { id: string }
 }
 
+export type CheckoutHook = {
+  data: Cart | null | undefined
+  input: { checkoutId?: string }
+  fetcherInput: { checkoutId?: string }
+  body: { checkoutId?: string }
+  actionInput: { checkoutId?: string }
+}
+
 /**
  * Cart API endpoitns & handlers for add, update and remove items from the cart
  */

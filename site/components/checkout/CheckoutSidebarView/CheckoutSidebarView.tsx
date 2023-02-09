@@ -12,6 +12,8 @@ import PaymentWidget from '../PaymentWidget'
 import s from './CheckoutSidebarView.module.css'
 import { useCheckoutContext } from '../context'
 
+
+// Here be custom logic to submit an empty basket
 const CheckoutSidebarView: FC = () => {
   const [loadingSubmit, setLoadingSubmit] = useState(false)
   const { setSidebarView, closeSidebar } = useUI()
@@ -24,7 +26,6 @@ const CheckoutSidebarView: FC = () => {
       setLoadingSubmit(true)
       event.preventDefault()
 
-      await onCheckout()
       clearCheckoutFields()
       setLoadingSubmit(false)
       refreshCart()
@@ -58,14 +59,14 @@ const CheckoutSidebarView: FC = () => {
           <Text variant="sectionHeading">Checkout</Text>
         </Link>
 
-        <PaymentWidget
+        {/* <PaymentWidget
           isValid={checkoutData?.hasPayment}
           onClick={() => setSidebarView('PAYMENT_VIEW')}
         />
         <ShippingWidget
           isValid={checkoutData?.hasShipping}
           onClick={() => setSidebarView('SHIPPING_VIEW')}
-        />
+        /> */}
 
         <ul className={s.lineItemsList}>
           {cartData!.lineItems.map((item: any) => (
@@ -106,7 +107,6 @@ const CheckoutSidebarView: FC = () => {
           <Button
             type="submit"
             width="100%"
-            disabled={!checkoutData?.hasPayment || !checkoutData?.hasShipping}
             loading={loadingSubmit}
           >
             Confirm Purchase

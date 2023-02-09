@@ -10,11 +10,16 @@ import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
 import { LineItem } from '@commerce/types/cart'
+import useCheckout from '@framework/checkout/use-checkout'
 
 const countItem = (count: number, item: LineItem) => count + item.quantity
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
   const { data, isLoading, isEmpty } = useCart()
+
+
+  const checkout = useCheckout()
+
 
   const { price: subTotal } = usePrice(
     data && {
@@ -29,7 +34,9 @@ const CartSidebarView: FC = () => {
     }
   )
   const handleClose = () => closeSidebar()
-  const goToCheckout = () => setSidebarView('CHECKOUT_VIEW')
+  const createCheckout = () => {
+    checkout({checkoutId: data?.id})
+  }
 
   const itemsCount = data?.lineItems?.reduce(countItem, 0) ?? 0
 
@@ -108,7 +115,7 @@ const CartSidebarView: FC = () => {
                 <span className="font-bold tracking-wide">FREE</span>
               </li>
             </ul> */}
-            <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
+            <div className="flex justify-between border-accent-2 py-3 font-bold mb-2">
               <span>Fleet Size</span>
               <span>{itemsCount}</span>
             </div>
@@ -117,8 +124,8 @@ const CartSidebarView: FC = () => {
             </div>
             <div>
               {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
-                <Button Component="a" width="100%" onClick={goToCheckout}>
-                  Proceed to Checkout ({total})
+                <Button Component="a" width="100%" onClick={createCheckout}>
+                  Submit Quote Request
                 </Button>
               ) : (
                 <Button href="/checkout" Component="a" width="100%">

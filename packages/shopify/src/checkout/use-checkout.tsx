@@ -1,16 +1,16 @@
-import { SWRHook } from '@vercel/commerce/utils/types'
-import useCheckout, {
-  UseCheckout,
-} from '@vercel/commerce/checkout/use-checkout'
+import { useSWRHook } from '@vercel/commerce/utils/use-hook'
+import { getCheckoutQuery } from '../utils/queries'
 
-export default useCheckout as UseCheckout<typeof handler>
-
-export const handler: SWRHook<any> = {
-  fetchOptions: {
-    query: '',
-  },
-  async fetcher({ input, options, fetch }) {},
-  useHook:
-    ({ useData }) =>
-    async (input) => ({}),
+const useCheckout = (input?: any) => {
+  return useSWRHook({
+    fetcher: () => {},
+    useHook: () => {
+      return () => {}
+    },
+    fetchOptions: {
+      query: getCheckoutQuery,
+    },
+  })(input)
 }
+
+export default useCheckout
