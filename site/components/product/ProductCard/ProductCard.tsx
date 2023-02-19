@@ -25,6 +25,24 @@ export interface PapayaProduct extends Product {
   power?: {
     value: string | number
   }
+  vehicleType?: {
+    value: string
+  }
+  rangeList?: {
+    value: string
+  }
+  chargeTimeList?: {
+    value: string
+  }
+  cargoCapacityKg?: {
+    value: string
+  }
+  cargoCapacityL?: {
+    value: string
+  }
+  topSpeed?: {
+    value: string
+  }
 }
 
 
@@ -33,15 +51,20 @@ interface Props {
   product: PapayaProduct
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple' | 'search'
+  variant?: 'default' | 'slim' | 'simple' | 'search' | 'related'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
 
+const SingleOrRange = ({ value }: { value: string | number}) => {
+  const [min, max] = value.toString().startsWith('[') ? JSON.parse(value as string) : [value, value]
+  return <>{(min === max || max === undefined) ? `${min}` : `${min} - ${max}`}</>
+}
+
 export const MetaData: FC<{ label: string, value: string | number | undefined, unit?: string }> = ({ label, value, unit }) => {
   return value ? <div className='flex justify-between items-center mb-2'>
     <div className='text-xs inline-flex items-center rounded-full bg-papaya-secondary px-2.5 py-0.5 font-bold text-papaya'>{label}</div>
-    <div className='font-medium text-sm'>{value} {unit}</div>
+    <div className='font-medium text-sm'><SingleOrRange value={value} /> {unit}</div>
   </div>: null
 }
 
@@ -153,6 +176,34 @@ const ProductCard: FC<Props> = ({
       )}
 
       {variant === 'search' && (
+        <div className='border rounded-md bg-primary-2 py-3 px-4'>
+          <h3 className='text-lg font-medium'>
+            {product.name}
+          </h3>
+          <div className={s.imageContainer}>
+            {product?.images && (
+              <Image
+                alt={product.name || 'Product Image'}
+                className={s.productImage}
+                src={product.images[0]?.url || placeholderImg}
+                height={540}
+                width={540}
+                quality="85"
+                {...imgProps}
+              />
+            )}
+          </div>
+          <div className='mt-2 border-t pt-4'>
+            <MetaData label='Type' value={product.vehicleType?.value} />
+            <MetaData label='Range' value={product.rangeList?.value} unit='Km' />
+            <MetaData label='Charge Time' value={product.chargeTimeList?.value} unit='Hours' />
+            <MetaData label='Cargo Capacity' value={product.cargoCapacityKg?.value} unit='Kg' />
+            <MetaData label='Top Speed' value={product.topSpeed?.value} unit='Km/h' />
+          </div>
+        </div>
+      )}
+
+{variant === 'related' && (
         <div className='border rounded-md bg-primary-2 py-3 px-4'>
           <h3 className='text-lg font-medium'>
             {product.name}
