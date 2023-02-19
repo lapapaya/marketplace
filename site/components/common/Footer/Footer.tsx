@@ -58,7 +58,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-3 flex items-start lg:justify-end text-primary">
             <div className="flex space-x-4 items-center h-10">
-              <ThemeSwitcher />
+              {/* <ThemeSwitcher /> */}
               {/* <I18nWidget /> */}
             </div>
           </div>

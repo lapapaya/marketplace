@@ -84,15 +84,63 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
       }
 
 
-      <div className="mt-6 bg-primary-2 p-4 border rounded-md">
+      <div className="mt-6 bg-primary-2 p-8 border rounded-md">
 
-      <h3 className='font-medium text-xl text-slate-700 mb-5'>Stats</h3>
+      <h3 className='font-bold text-2xl text-slate-700 mb-5'>Technical Specifications</h3>
 
-      <MetaData label='Range' value={product.range?.value} unit='KM' />
-      <MetaData label='Charge Time' value={product.chargeTime?.value} unit='hours' />
-      <MetaData label='Capacity' value={product.capacity?.value} unit='Kg' />
-      <MetaData label='Voltage' value={product.voltage?.value} unit='V' />
-      <MetaData label='Power' value={product.power?.value} unit='W' />
+
+      <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+
+              <div className="pt-4">
+                <dt className="font-medium text-gray-900 border-b pb-4 border-gray-200 ">Cargo Capability</dt>
+                <dd className="mt-4 text-sm text-gray-500">
+                  <MetaData label='Capacity' value={product.cargoCapacityKg?.value} unit='Kg' />
+                  <MetaData label='Volume' value={product.cargoCapacityL?.value} unit='L' />
+                </dd>
+              </div>
+
+              <div className="pt-4">
+                <dt className="font-medium text-gray-900 border-b pb-4 border-gray-200">Engine & Range</dt>
+                <dd className="mt-4 text-sm text-gray-500">
+
+                  <MetaData label='Range' value={product.rangeList?.value} unit='Km' />
+                  <MetaData label='Voltage' value={product.voltage?.value} unit='V' />
+                  <MetaData label='Power' value={product.power?.value} unit='W' />
+                  <MetaData label='Torque' value={product.torque?.value} unit='Nm' />
+                  <MetaData label='Top Speed' value={product.topSpeed?.value} unit='Km/h' />
+
+
+                </dd>
+              </div>
+
+              <div className="pt-4">
+                <dt className="font-medium text-gray-900 border-b pb-4 border-gray-200">Battery</dt>
+                <dd className="mt-4 text-sm text-gray-500">
+                  <MetaData label='Type' value={product.batteryType?.value} />
+                  <MetaData label='Charge Time' value={product.chargeTimeList?.value} unit='hours' />
+                  <MetaData label='Number' value={product.numberOfBatteries?.value} />
+                  <MetaData label='Replaceable' value={product.batteryReplaceable?.value} />
+                </dd>
+              </div>
+
+              <div className="pt-4">
+                <dt className="font-medium text-gray-900 border-b pb-4 border-gray-200">Vehicle</dt>
+                <dd className="mt-4 text-sm text-gray-500">
+                  <MetaData label='Unloaded Weight' value={product.vehicleWeight?.value} unit='Kg' />
+                  <MetaData label='Brand' value={product.brandId?.value} />
+                  <MetaData label='Tyres' value={product.tyres?.value} />
+                  <MetaData label='Brakes' value={product.brakes?.value} />
+                </dd>
+              </div>
+
+              <div className="pt-4">
+                <dt className="font-medium text-gray-900 border-b pb-4 border-gray-200">Addons</dt>
+                <dd className="mt-4 text-sm text-gray-500">
+                  <p>{product.addons?.value}</p>
+                </dd>
+              </div>
+
+          </dl>
 
       </div>
 

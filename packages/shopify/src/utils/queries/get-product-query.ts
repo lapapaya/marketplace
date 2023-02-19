@@ -39,6 +39,61 @@ const getProductQuery = /* GraphQL */ `
       power: metafield(namespace: "papaya", key: "power_w") {
         value
       }
+      vehicleType: metafield(namespace: "papaya", key: "vehicle_type") {
+        value
+      }
+      rangeList: metafield(namespace: "papaya", key: "range-list") {
+        value
+      }
+      chargeTimeList: metafield(namespace: "papaya", key: "charge_tim_range") {
+        value
+      }
+      cargoCapacityKg: metafield(namespace: "papaya", key: "cargo_capacity") {
+        value
+      }
+      cargoCapacityL: metafield(
+        namespace: "papaya"
+        key: "cargo_capacity_liters"
+      ) {
+        value
+      }
+      topSpeed: metafield(namespace: "papaya", key: "top_speed_km") {
+        value
+      }
+      batteryReplaceable: metafield(
+        namespace: "papaya"
+        key: "battery_replaceable"
+      ) {
+        value
+      }
+      numberOfBatteries: metafield(
+        namespace: "papaya"
+        key: "number_of_batteries"
+      ) {
+        value
+      }
+      addons: metafield(namespace: "papaya", key: "addons") {
+        value
+      }
+      batteryType: metafield(namespace: "papaya", key: "battery_type") {
+        value
+      }
+      brakes: metafield(namespace: "papaya", key: "brakes") {
+        value
+      }
+      tyres: metafield(namespace: "papaya", key: "tyres") {
+        value
+      }
+      vehicleWeight: metafield(namespace: "papaya", key: "vehicle_weight") {
+        value
+      }
+      torque: metafield(namespace: "papaya", key: "torque") {
+        value
+      }
+      brandId: metafield(namespace: "papaya", key: "brand_id") {
+        value
+      }
+
       variants(first: 250) {
         pageInfo {
           hasNextPage

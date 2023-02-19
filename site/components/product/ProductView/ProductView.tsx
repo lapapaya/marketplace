@@ -9,7 +9,7 @@ import { ProductSlider, ProductCard } from '@components/product'
 import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
-import ProductTag from '../ProductTag'
+import Link from 'next/link'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -27,11 +27,13 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
       <Container className="max-w-none w-full" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
-            <ProductTag
-              name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
-              fontSize={32}
-            />
+          <div className='flex items-center pt-0 pl-7 '>
+            <Link href='/search' className='mr-3'>
+              Vehicles
+            </Link>
+            <svg className='mr-3' xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M9.4 18L8 16.6l4.6-4.6L8 7.4L9.4 6l6 6Z"/></svg>
+            <h1 className='text-3xl font-bold max-w-full w-full leading-extra-loose'>{product.name}</h1>
+          </div>
             <div className={s.sliderContainer}>
               <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (

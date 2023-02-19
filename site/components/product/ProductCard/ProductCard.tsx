@@ -13,15 +13,6 @@ export interface PapayaProduct extends Product {
   voltage?: {
     value: string | number
   }
-  capacity?: {
-    value: string | number
-  }
-  range?: {
-    value: string | number
-  }
-  chargeTime?: {
-    value: string | number
-  }
   power?: {
     value: string | number
   }
@@ -43,6 +34,36 @@ export interface PapayaProduct extends Product {
   topSpeed?: {
     value: string
   }
+
+
+  batteryReplaceable: {
+    value: string
+  }
+  numberOfBatteries: {
+    value: string
+  }
+  addons: {
+    value: string
+  }
+  batteryType: {
+    value: string
+  }
+  brakes: {
+    value: string
+  }
+  tyres: {
+    value: string
+  }
+  vehicleWeight: {
+    value: string
+  }
+  torque: {
+    value: string
+  }
+  brandId: {
+    value: string
+  }
+
 }
 
 
@@ -199,34 +220,6 @@ const ProductCard: FC<Props> = ({
             <MetaData label='Charge Time' value={product.chargeTimeList?.value} unit='Hours' />
             <MetaData label='Cargo Capacity' value={product.cargoCapacityKg?.value} unit='Kg' />
             <MetaData label='Top Speed' value={product.topSpeed?.value} unit='Km/h' />
-          </div>
-        </div>
-      )}
-
-{variant === 'related' && (
-        <div className='border rounded-md bg-primary-2 py-3 px-4'>
-          <h3 className='text-lg font-medium'>
-            {product.name}
-          </h3>
-          <div className={s.imageContainer}>
-            {product?.images && (
-              <Image
-                alt={product.name || 'Product Image'}
-                className={s.productImage}
-                src={product.images[0]?.url || placeholderImg}
-                height={540}
-                width={540}
-                quality="85"
-                {...imgProps}
-              />
-            )}
-          </div>
-          <div className='mt-2 border-t pt-4'>
-            <MetaData label='Range' value={product.range?.value} unit='KM' />
-            <MetaData label='Charge Time' value={product.chargeTime?.value} unit='hours' />
-            <MetaData label='Capacity' value={product.capacity?.value} unit='Kg' />
-            <MetaData label='Voltage' value={product.voltage?.value} unit='V' />
-            <MetaData label='Power' value={product.power?.value} unit='W' />
           </div>
         </div>
       )}
