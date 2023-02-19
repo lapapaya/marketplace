@@ -28,6 +28,7 @@ import {
   useSearchMeta,
 } from '@lib/search'
 import ErrorMessage from './ui/ErrorMessage'
+import { PapayaProduct } from './product/ProductCard/ProductCard'
 
 export default function Search({ categories, brands }: SearchPropsType) {
   const [activeFilter, setActiveFilter] = useState('')
@@ -326,7 +327,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   variant="search"
                   key={product.path}
                   className="animated fadeIn"
-                  product={product}
+                  product={product as PapayaProduct}
                   imgProps={{
                     width: 480,
                     height: 480,
