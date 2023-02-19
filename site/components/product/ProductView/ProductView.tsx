@@ -10,6 +10,7 @@ import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
 import Link from 'next/link'
+import { PapayaProduct } from '../ProductCard/ProductCard'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -62,7 +63,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
 
           <ProductSidebar
             key={product.id}
-            product={product}
+            product={product as PapayaProduct}
             className={s.sidebar}
           />
         </div>
@@ -77,7 +78,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               >
                 <ProductCard
                   noNameTag
-                  product={p}
+                  product={p as PapayaProduct}
                   key={p.path}
                   variant="search"
                   className="animated fadeIn"
