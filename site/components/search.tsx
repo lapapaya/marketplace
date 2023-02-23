@@ -276,7 +276,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
           </div>
         </div>
         {/* Products */}
-        <div className="col-span-8 order-3 lg:order-none">
+        <div className="col-span-10 order-3 lg:order-none">
           {(q || activeCategory || activeBrand) && (
             <div className="mb-5 mt-2 transition ease-in duration-75">
               {data ? (
@@ -363,7 +363,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
         </div>
 
         {/* Sort */}
-        <div className="col-span-8 lg:col-span-2 order-2 lg:order-none">
+        {/* <div className="col-span-8 lg:col-span-2 order-2 lg:order-none">
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
               <span className="rounded-md shadow-sm">
@@ -458,7 +458,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Container>
   )
