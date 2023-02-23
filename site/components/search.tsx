@@ -318,6 +318,21 @@ export default function Search({ categories, brands }: SearchPropsType) {
               ) : (
                 <>Searching...</>
               )}
+
+
+    <Link
+      href={'/search'}
+      className="text-sm ml-4 font-medium text-gray-600 hover:text-orange-500 border-2 px-2 py-1 bg-white rounded-full"
+    >
+    <span>
+    Clear <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="inline w-3 h-3">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+</svg>
+
+    </span>
+
+    </Link>
+
             </div>
           )}
           {data ? (
