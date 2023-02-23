@@ -1,3 +1,9 @@
+// This file sets a custom webpack configuration to use your Next.js app
+// with Sentry.
+// https://nextjs.org/docs/api-reference/next.config.js/introduction
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+const { withSentryConfig } = require('@sentry/nextjs');
+
 const commerce = require('./commerce.config.json')
 const { withCommerceConfig, getProviderName } = require('./commerce-config')
 
@@ -50,3 +56,9 @@ module.exports = withCommerceConfig({
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
 console.log('next.config.js', JSON.stringify(module.exports, null, 2))
+
+module.exports = withSentryConfig(
+  module.exports,
+  { silent: true },
+  { hideSourcemaps: true },
+);
